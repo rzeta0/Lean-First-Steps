@@ -1,4 +1,4 @@
--- 01 - First Proof by Calculation
+-- 01 - Evaluting a Function
 
 import Mathlib.Tactic
 

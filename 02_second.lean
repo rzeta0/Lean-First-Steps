@@ -1,9 +1,11 @@
--- 02 - Second Proof by Calculation
+-- 02 - Simultaneous Equations with re-writing
 
 import Mathlib.Tactic
 
-example {y a b : ℝ} (h1 : y = (a - b) * (a + b)) : y = a^2 - b^2 :=
+example {x y : ℝ} (h1 : y - 2 = 2) (h2: y + x = 6) : x = 2 :=
   calc
-    y = (a - b) * (a + b) := by rw [h1]
-    _ = a^2 - a*b + a*b - b^2 := by ring
-    _ = a^2 - b^2 := by ring
+    x = y + x - y := by ring
+    _ = 6 - y := by rw [h2]
+    _ = 6 - (y - 2) -2 := by ring
+    _ = 6 - (2) - 2 := by rw [h1]
+    _ = 2 := by norm_num
