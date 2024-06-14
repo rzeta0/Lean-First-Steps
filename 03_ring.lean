@@ -1,4 +1,4 @@
--- 03 - Algebra with ring
+-- 03 - Simple Algebra
 
 import Mathlib.Tactic
 
