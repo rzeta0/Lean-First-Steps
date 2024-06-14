@@ -1,8 +1,8 @@
--- 02 - Functions Without Numbers
+-- 02 - Symbols, No Numbers
 
 import Mathlib.Tactic
 
-example {x y z : ℝ} (h1 : z = y^2) (h2: y = x + 2) : z = (x + 2)^2 :=
+example {x y z c: ℝ} (h1 : z = y^2) (h2: y = x + c) : z = (x + c)^2 :=
   calc
     z = y^2 := by rw [h1]
-    _ = (x+2)^2 := by rw [h2]
+    _ = (x+c)^2 := by rw [h2]
