@@ -1,4 +1,4 @@
--- 03 - Simple Algebra
+-- 04 - Simple Algebra
 
 import Mathlib.Tactic
 
