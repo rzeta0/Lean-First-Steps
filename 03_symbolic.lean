@@ -1,4 +1,4 @@
--- 02 - Symbols, No Numbers
+-- 03 - Symbols, No Numbers
 
 import Mathlib.Tactic
 
