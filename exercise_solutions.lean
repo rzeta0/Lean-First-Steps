@@ -33,8 +33,6 @@ example {x y z: ℝ} (h1 : z = y) (h2: y = x) : z = x :=
 -- 04 - Simple Algebra
 -- Write a Lean program to
 
-import Mathlib.Tactic
-
 example {a b : ℤ} : (a - b) * (a + b) = a^2 - b^2 :=
   calc
     (a - b) * (a + b) = a^2 - a*b + a*b - b^2 := by ring
