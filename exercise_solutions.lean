@@ -31,7 +31,7 @@ example {x y z: ℝ} (h1 : z = y) (h2: y = x) : z = x :=
 
 
 -- 04 - Simple Algebra
--- Write a Lean program to
+-- Write a Lean program to prove (a+b)^2=a^2 + b^2 if we know ab=0, where a,b ∈ ℤ.
 
 example {a b : ℤ} : (a - b) * (a + b) = a^2 - b^2 :=
   calc
