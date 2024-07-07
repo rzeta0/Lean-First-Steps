@@ -12,7 +12,7 @@ example {a: ℕ} (h1: a = 4) : a < 10 := by
 
 
 -- 02 - Simple Proof by Calculation
--- Write a Lean program to prove y = 0 given y=x^2 - 9 and x = -3, where x,y ∈ ℝ.
+-- Write a Lean program to prove y = 0 given y = x^2 - 9 and x = -3, where x,y ∈ ℝ.
 
 example {x y : ℝ} (h1 : y = x^2 - 9) (h2 : x = -3) : y = 0 :=
   calc
@@ -31,9 +31,17 @@ example {x y z: ℝ} (h1 : z = y) (h2: y = x) : z = x :=
 
 
 -- 04 - Simple Algebra
--- Write a Lean program to prove (a+b)^2=a^2 + b^2 if we know ab=0, where a,b ∈ ℤ.
+-- Write a Lean program to prove (a+b)^2 = a^2 + b^2 if we know ab = 0, where a,b ∈ ℤ.
 
 example {a b : ℤ} : (a - b) * (a + b) = a^2 - b^2 :=
   calc
     (a - b) * (a + b) = a^2 - a*b + a*b - b^2 := by ring
     _ = a^2 - b^2 := by ring
+
+
+-- 05 - Inequalities
+-- Write a Lean program to prove a > c if we know a > b and b ≥ c, where a,b,c ∈ ℕ.
+example {a b c : ℕ} (h1: a > b) (h2: b ≥ c) : a > c :=
+  calc
+    a > b := by rel [h1]
+    _ ≥ c := by rel [h2]
