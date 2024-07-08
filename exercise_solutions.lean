@@ -40,8 +40,8 @@ example {a b : ℤ} : (a - b) * (a + b) = a^2 - b^2 :=
 
 
 -- 05 - Inequalities
--- Write a Lean program to prove a > c if we know a > b and b ≥ c, where a,b,c ∈ ℕ.
-example {a b c : ℕ} (h1: a > b) (h2: b ≥ c) : a > c :=
+-- Write a Lean program to prove a < c if we know a < b and b ≤ c, where a,b,c ∈ ℕ.
+example {a b c : ℕ} (h1: a < b) (h2: b ≤ c) : a < c :=
   calc
-    a > b := by rel [h1]
-    _ ≥ c := by rel [h2]
+    a < b := by rel [h1]
+    _ ≤ c := by rel [h2]
