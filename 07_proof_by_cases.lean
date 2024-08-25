@@ -1,4 +1,4 @@
--- 07 - Proof by Casesly
+-- 07 - Proof by Cases
 
 import Mathlib.Tactic
 
