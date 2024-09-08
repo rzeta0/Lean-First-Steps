@@ -78,6 +78,7 @@ example : ∃ n : ℕ, n > 5 := by
   calc
     6 > 5 := by norm_num
 
+-- more concise
 example : ∃ n : ℕ, n > 5 := by
   use 6
   norm_num
