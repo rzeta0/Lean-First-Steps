@@ -1,5 +1,7 @@
 -- 09 - Disjunctive "or" Goal
 
+import Mathlib.Tactic
+
 example {x : ℤ} (h : x = -1) : x^2 = 1 ∨ x^2 = -1 := by
   left
   calc

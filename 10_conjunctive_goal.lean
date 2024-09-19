@@ -1,5 +1,7 @@
 -- 10 - Conjunctive "and" Goal
 
+import Mathlib.Tactic
+
 example {x : ℤ} (h : x = -1) : x^2 = 1 ∧ x^3 = -1 := by
   constructor
   · calc
