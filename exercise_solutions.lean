@@ -58,6 +58,7 @@ example {a b : ℤ} (h1 : a = b + c) (h2: b - 1 = 0) (h3: c + 1 = 2) : a = 2 := 
     _ = 1 + 1 := by rw [h4, h5]
     _ = 2 := by norm_num
 
+
 -- 07 - Proof By Cases
 -- Write a Lean program to prove x^2 - 3*x + 2 = 0, given (x = 1) ∨ (x = 2), where x ∈ ℝ.
 
@@ -69,7 +70,6 @@ example {x : ℝ} (h: x = 1 ∨ x = 2 ) : x^2 - 3*x + 2 = 0 := by
   · calc
     x^2 - 3*x + 2 = (2)^2 - 3*(2) + 2 := by rw [hb]
     _ = 0 := by norm_num
-
 
 
 -- 08 - Conjunctive "and" Hypothesis
