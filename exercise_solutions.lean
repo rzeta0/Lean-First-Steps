@@ -70,7 +70,21 @@ example {x : ℝ} (h: x = 1 ∨ x = 2 ) : x^2 - 3*x + 2 = 0 := by
     x^2 - 3*x + 2 = (2)^2 - 3*(2) + 2 := by rw [hb]
     _ = 0 := by norm_num
 
--- 08 - Existence
+
+
+-- 08 - Conjunctive "and" Hypothesis
+-- Write a Lean program to show that y≥8, given (x ≥ 5) ∧ (y = x+3), where x,y ∈ ℤ.
+
+example {x y : ℤ} (h : x ≥ 5 ∧ y = x + 3) : y ≥ 8 := by
+  obtain ⟨ ha , hb ⟩ := h
+  calc
+    y = x + 3 := by rw [hb]
+    _ ≥ (5) + 3 := by rel [ha]
+    _ = 8 := by norm_num
+
+
+
+-- 11 - Existence
 -- Write a Lean program to prove there exists a natural number larger than 5.
 
 example : ∃ n : ℕ, n > 5 := by
