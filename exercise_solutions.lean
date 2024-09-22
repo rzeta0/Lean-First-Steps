@@ -83,6 +83,17 @@ example {x y : ℤ} (h : x ≥ 5 ∧ y = x + 3) : y ≥ 8 := by
     _ = 8 := by norm_num
 
 
+-- 09 - Disjunctive "or" Goal
+-- Write a Lean program to show that (x = 1) ∨ (x^2 = 1) ∨ (x^3 = 1) given integer x = -1.
+
+example {x : ℤ} (h : x = -1) : x = 1 ∨ x^2 = 1 ∨ x^3 = 1 := by
+  right
+  left
+  calc
+    x^2 = (-1)^2 := by rw [h]
+    _ = 1 := by norm_num
+
+
 
 -- 11 - Existence
 -- Write a Lean program to prove there exists a natural number larger than 5.
