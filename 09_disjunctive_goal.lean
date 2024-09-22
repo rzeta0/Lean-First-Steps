@@ -2,7 +2,7 @@
 
 import Mathlib.Tactic
 
-example {x : ℤ} (h : x = -1) : x^2 = 1 ∨ x^2 = -1 := by
+example {x : ℤ} (h : x = -1) : x^2 = 1 ∨ x^3 = 1 := by
   left
   calc
     x^2 = (-1)^2 := by rw [h]
