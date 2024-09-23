@@ -7,7 +7,7 @@ example : ∃ n: ℕ, n^2 + 1 = 10 := by
   calc
     3^2 + 1 = 10 := by norm_num
 
--- more concise
+-- more concise version
 example : ∃ n: ℕ, n^2 + 1 = 10 := by
   use 3
   norm_num
