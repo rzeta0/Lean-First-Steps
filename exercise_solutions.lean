@@ -123,3 +123,11 @@ example : ∃ n : ℕ, n > 5 := by
 example : ∃ n : ℕ, n > 5 := by
   use 6
   norm_num
+
+
+-- 12 - Using Lemmas: Not Equal from Less Than
+-- Write a Lean program to prove n ≠ 5, given n > 5, for n ∈ ℕ
+
+example {n : ℕ} (h: n > 5): n ≠ 5 := by
+  apply ne_of_gt
+  apply h
