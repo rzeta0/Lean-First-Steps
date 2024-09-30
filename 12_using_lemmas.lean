@@ -23,5 +23,9 @@ example {n : ℕ} (h: n < 5): n ≠ 5 := by
   apply ne_of_lt
   apply h
 
+<<<<<<< HEAD
 ---
 >>>>>>> 0297859 (more examples of apply)
+=======
+--
+>>>>>>> 516e1c9 (apply)
