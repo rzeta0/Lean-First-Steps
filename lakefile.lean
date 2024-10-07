@@ -12,6 +12,9 @@ require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git" @ "v4.12.0"
 
 
+-- lemmas used by this course
+lean_lib LeanFirstSteps
+
 @[default_target]
 lean_lib «Leantest» where
   -- add any library configuration options here

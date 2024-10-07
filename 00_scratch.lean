@@ -1,4 +1,5 @@
 import Mathlib.Tactic
+import LeanFirstSteps
 
 ---
 
@@ -35,3 +36,18 @@ example {n : ℕ} : n^2 ≠ 2 := by
       _ > 2 := by norm_num
 
 ---
+
+-- uses le_or_succ_le lemma
+example {n : ℕ} : n^2 ≠ 2 := by
+  have h := le_or_succ_le n 1
+  obtain ha | hb := h
+  · apply ne_of_lt
+    calc
+      n^2 ≤ (1)^2 := by rel [ha]
+      _ < 2 := by norm_num
+  · apply ne_of_gt
+    calc
+      n^2 ≥ (2)^2 := by rel [hb]
+      _ > 2 := by norm_num
+
+--
