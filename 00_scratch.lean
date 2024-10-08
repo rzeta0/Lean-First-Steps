@@ -39,7 +39,7 @@ example {n : ℕ} : n^2 ≠ 2 := by
 
 -- uses le_or_succ_le lemma
 example {n : ℕ} : n^2 ≠ 2 := by
-  have h := le_or_succ_le n 1
+  have h := Nat.le_or_succ_le n 1
   obtain ha | hb := h
   · apply ne_of_lt
     calc
