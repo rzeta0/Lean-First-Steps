@@ -1,4 +1,5 @@
 import Mathlib.Tactic
+
 import LeanFirstSteps
 
 ---
@@ -51,3 +52,20 @@ example {n : ℕ} : n^2 ≠ 2 := by
       _ > 2 := by norm_num
 
 --
+
+-- not_prime_pow
+
+example {a : ℕ} (h: a = 9) : ¬ Prime (a) := by
+  -- h1 : a = 3 ^ 2
+  have h1 :=
+    calc
+      a = 9 := by rw [h]
+      _ = 3^2 := by ring
+  -- h2 : 2 ≠ 1
+  have h2 : 2 ≠ 1 := by
+    apply ne_of_gt
+    norm_num
+  rw [h1]
+  apply not_prime_pow h2
+
+---
