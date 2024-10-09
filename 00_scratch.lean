@@ -53,6 +53,24 @@ example {n : ℕ} : n^2 ≠ 2 := by
 
 --
 
+-- definition
+
+example {a : ℕ} (h: a = 13) : Odd a := by
+  dsimp [Odd]
+  use 6
+  calc
+    a = 13 :=  by rw [h]
+    _ = 2*6 + 1 := by ring
+
+
+example  : Odd 13 := by
+  dsimp [Odd]
+  use 6
+  calc
+    13 = 2*6 + 1 := by ring
+
+---
+
 -- not_prime_pow
 
 example {a : ℕ} (h: a = 9) : ¬ Prime (a) := by
@@ -68,7 +86,19 @@ example {a : ℕ} (h: a = 9) : ¬ Prime (a) := by
   rw [h1]
   apply not_prime_pow h2
 
----
+----
+
+-- Is Square?
+
+example {a : ℕ} (h: a = 9) : IsSquare a := by
+  dsimp [IsSquare]
+  use 3
+
+example : IsSquare 9 := by
+  dsimp [IsSquare]
+  use 3
+
+----
 
 -- IsSquare.not_prime
 
