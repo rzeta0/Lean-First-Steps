@@ -69,3 +69,13 @@ example {a : ℕ} (h: a = 9) : ¬ Prime (a) := by
   apply not_prime_pow h2
 
 ---
+
+-- IsSquare.not_prime
+
+example {a : ℕ} (h: a = 9) : ¬ Prime (a) := by
+  have h1: IsSquare a := by
+    dsimp [IsSquare]
+    use 3
+  apply IsSquare.not_prime h1
+
+---
