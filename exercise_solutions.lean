@@ -125,7 +125,15 @@ example : ∃ n : ℕ, n > 5 := by
   norm_num
 
 
--- 12 - Using Lemmas: Not Equal from Less Than
+-- 12 - Using Definitions: Odd & Even Numbers
+
+example : Even (14: ℤ)  := by
+  dsimp [Even]
+  use 7
+  norm_num
+
+
+-- 13 - Using Lemmas: Not Equal from Less Than
 -- Write a Lean program to prove n ≠ 5, given n > 5, for n ∈ ℕ
 
 example {n : ℕ} (h: n > 5): n ≠ 5 := by
