@@ -1,4 +1,4 @@
--- 12 - Using Lemmas: Not Equal from Less Than
+-- 13 - Lemma: Not Equal from Less Than
 
 import Mathlib.Tactic
 
