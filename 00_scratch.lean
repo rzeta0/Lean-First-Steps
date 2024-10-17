@@ -62,6 +62,16 @@ example {n : ℤ} : Even ( n*(n+1) ) := by
     have g2: Even (n+1) := Int.even_add_one.mpr g1
     apply Even.mul_left g2
 
+
+---
+
+example {n : ℤ} : Even ( n*(n+1) ) := by
+  obtain ha | hb := Int.even_or_odd n
+  · apply Even.mul_right ha
+  · apply Even.mul_left
+    rw [Int.even_add_one,Int.not_even_iff_odd]
+    apply hb
+
 -----
 
 example {n : ℤ } : Even (n*(n+1)) := by
