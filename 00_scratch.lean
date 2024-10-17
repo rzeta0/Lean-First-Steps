@@ -69,7 +69,9 @@ example {n : ℤ} : Even ( n*(n+1) ) := by
   obtain ha | hb := Int.even_or_odd n
   · apply Even.mul_right ha
   · apply Even.mul_left
-    rw [Int.even_add_one,Int.not_even_iff_odd]
+    --rw [Int.even_add_one,Int.not_even_iff_odd]
+    rw [Int.even_add_one]
+    rw [Int.not_even_iff_odd]
     apply hb
 
 -----
