@@ -58,12 +58,9 @@ example {n : ℤ} : Even (n^2 + n) := by
 example {n : ℤ} : Even ( n*(n+1) ) := by
   obtain ha | hb := Int.even_or_odd n
   · apply Even.mul_right ha
-  · have g1: ¬ Even n := Int.not_even_iff_odd hb
-    have g2: Even (n+1) := Int.even_add_one g1
+  · have g1: ¬ Even n := Int.not_even_iff_odd.mpr hb
+    have g2: Even (n+1) := Int.even_add_one.mpr g1
     apply Even.mul_left g2
-    --apply Even.mul_left hb
-    -- Int.even_add_one hb
-    -- apply Int.not_even_iff_odd hb
 
 -----
 
