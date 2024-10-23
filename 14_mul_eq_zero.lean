@@ -2,7 +2,7 @@
 
 import Mathlib.Tactic
 
-example {p q : ℚ} (h: (p - 1) * (q - 2) = 0): p = 1 ∨ q = 2 := by
+example {p q : ℚ} (h: (p - 1)*(q - 2) = 0): p = 1 ∨ q = 2 := by
   rw [mul_eq_zero] at h
   obtain hp | hq := h
   · left
