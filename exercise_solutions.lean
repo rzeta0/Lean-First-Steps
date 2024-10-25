@@ -139,3 +139,14 @@ example : Even (14: ℤ)  := by
 example {n : ℕ} (h: n > 5): n ≠ 5 := by
   apply ne_of_gt
   apply h
+
+
+-- 14 - Using Lemmas: Multiplied Factors Equal Zero
+
+example {a b : ℚ} (h: a * b = 0): a = 0 ∨ b = 0 := by
+  apply mul_eq_zero.mp at h
+  exact h
+
+example {a b : ℚ} (h: a = 0 ∨ b = 0): a * b = 0 := by
+  apply mul_eq_zero.mpr at h
+  exact h
