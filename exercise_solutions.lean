@@ -143,10 +143,8 @@ example {n : ℕ} (h: n > 5): n ≠ 5 := by
 
 -- 14 - Using Lemmas: Multiplied Factors Equal Zero
 
-example {a b : ℚ} (h: a * b = 0): a = 0 ∨ b = 0 := by
-  apply mul_eq_zero.mp at h
-  exact h
-
-example {a b : ℚ} (h: a = 0 ∨ b = 0): a * b = 0 := by
+example {p q : ℚ} (h: (p - 1 = 0) ∨ (q - 2 = 0)): (p - 1) * (q - 2) = 0 := by
   apply mul_eq_zero.mpr at h
   exact h
+
+---
