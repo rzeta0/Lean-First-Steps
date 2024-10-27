@@ -2,7 +2,7 @@
 
 import Mathlib.Tactic
 
-example : Odd (13: ℤ)  := by
+example : Odd (13 : ℤ)  := by
   dsimp [Odd]
   use 6
   norm_num
