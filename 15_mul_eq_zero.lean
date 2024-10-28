@@ -1,4 +1,4 @@
--- 14 - Using Lemmas: Multiplied Factors Equal Zero
+-- 15 - Using Lemmas: Multiplied Factors Equal Zero
 
 import Mathlib.Tactic
 

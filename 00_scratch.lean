@@ -159,3 +159,12 @@ example : ¬ Nat.Prime (12) := by
   apply Nat.not_prime_mul h1 h2
 
 --
+---
+
+
+-- 13 - Lemma: Not Equal from Less Than
+-- but applied to hypthesis
+
+example {n : ℕ} (h : n < 5) : n ≠ 5 := by
+  apply ne_of_lt at h
+  exact h
