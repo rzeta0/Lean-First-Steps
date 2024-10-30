@@ -141,10 +141,11 @@ example {n : ℕ} (h: n > 5): n ≠ 5 := by
   apply h
 
 
--- 14 - Using Lemmas: Multiplied Factors Equal Zero
+-- 14 - Using Lemmas: Not Equal from Less Than
+-- Write a Lean program to prove n ≠ 5, given n > 5, for n ∈ ℕ
 
-example {p q : ℚ} (h: (p - 1 = 0) ∨ (q - 2 = 0)): (p - 1) * (q - 2) = 0 := by
-  apply mul_eq_zero.mpr at h
-  exact h
+example {n : ℕ} (h: n > 5): n ≠ 5 := by
+  apply ne_of_gt at h
+  apply h
 
 ---
