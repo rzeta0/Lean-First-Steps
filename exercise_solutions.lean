@@ -148,4 +148,16 @@ example {n : ℕ} (h: n > 5): n ≠ 5 := by
   apply ne_of_gt at h
   apply h
 
----
+
+-- 15 - Using Lemmas: Multiplied Factors Equal Zero
+-- Write a Lean program to prove (p-1)·(q-2)=0 given p=1 or q=2, for p, q ∈ ℚ.
+
+example {p q : ℚ} (h : p = 1 ∨ q = 2) : (p - 1) * (q - 2) = 0:= by
+  apply mul_eq_zero.mpr
+  obtain hp | hq := h
+  · left
+    linarith
+  · right
+    linarith
+
+--
