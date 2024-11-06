@@ -168,3 +168,9 @@ example : ¬ Nat.Prime (12) := by
 example {n : ℕ} (h : n < 5) : n ≠ 5 := by
   apply ne_of_lt at h
   exact h
+
+
+---
+
+
+example {p q : ℚ} (h : p = 1 ∨ q = 2) : (p - 1) * (q - 2) = 0:= by
