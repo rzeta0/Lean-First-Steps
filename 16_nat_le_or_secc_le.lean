@@ -1,4 +1,4 @@
--- 16 - Writing And Using Our Own Lemma: a ≤ b ∨ b + 1 ≤ a
+-- 16 - Writing And Using Our Own Lemma
 
 import Mathlib.Tactic
 
