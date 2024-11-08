@@ -13,7 +13,7 @@ require mathlib from git
 
 
 -- lemmas used by this course
-lean_lib LeanFirstSteps
+-- lean_lib LeanFirstSteps
 
 @[default_target]
 lean_lib «Leantest» where
