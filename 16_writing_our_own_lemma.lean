@@ -1,4 +1,4 @@
--- 16 - Writing And Using Our Own Lemma
+-- 16 - Writing Our Own Lemma
 
 import Mathlib.Tactic
 
