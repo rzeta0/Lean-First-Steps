@@ -176,3 +176,11 @@ example {n : ℕ} (h : n < 5) : n ≠ 5 := by
   exact h
 
 ---
+---
+
+-- note the 2*a to avoid division by 2 with naturals
+def Triangle (a : ℕ) : Prop := ∃ n, 2* a = n * (n + 1)
+
+example : Triangle 10 := by
+  dsimp [Triangle]
+  use 4
