@@ -184,3 +184,15 @@ def Triangle (a : ℕ) : Prop := ∃ n, 2* a = n * (n + 1)
 example : Triangle 10 := by
   dsimp [Triangle]
   use 4
+
+--- test rw directions
+
+example {a b : ℕ} (h1: b + 1 = a) (h2: b = 9) : a = 10 := by
+  calc
+    a = b + 1 := by rw [h1] -- h1: doesn't need to be a = b +1
+    _ = 9 + 1 := by rw [h2]
+
+
+example {a b : ℕ} (h1:  b = 7 ↔ a = 5) (h2: a = 5) : b = 7 := by
+  rw [← h1] at h2 -- does need direction
+  exact h2
