@@ -156,4 +156,13 @@ example {p q : ℚ} (h : p - 1 ≠ 0 ∧ q - 2 ≠ 0) : (p - 1) * (q - 2) ≠  0
   apply mul_ne_zero_iff.mpr at h
   exact h
 
---
+-- 16 - Writing Our Own Lemma
+-- Write a lemma for integers a and b that says a ≤ b ∨ b+1 ≤ a
+-- Provide a simple illustrative example using negative integers.
+
+lemma Int.le_or_succ_le (a b: ℤ): a ≤ b ∨ b + 1 ≤ a := by
+  rw [Int.add_one_le_iff]
+  exact le_or_lt a b
+
+example {c : ℤ} :  c ≤ -2 ∨ -1 ≤ c  := by
+  exact Int.le_or_succ_le c (-2:ℤ)
