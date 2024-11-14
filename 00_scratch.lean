@@ -185,14 +185,13 @@ example : Triangle 10 := by
   dsimp [Triangle]
   use 4
 
---- test rw directions
+---
 
-example {a b : ℕ} (h1: b + 1 = a) (h2: b = 9) : a = 10 := by
-  calc
-    a = b + 1 := by rw [h1] -- h1: doesn't need to be a = b +1
-    _ = 9 + 1 := by rw [h2]
+lemma Int.le_or_succ_le2 (a b: ℤ): a ≤ b ∨ b + 1 ≤ a := by
+  rw [Int.add_one_le_iff]
+  exact le_or_lt a b
 
 
-example {a b : ℕ} (h1:  b = 7 ↔ a = 5) (h2: a = 5) : b = 7 := by
-  rw [← h1] at h2 -- does need direction
-  exact h2
+lemma Nat.le_or_succ_le' (a b: ℕ): a ≤ b ∨ b + 1 ≤ a := by
+  rw [Nat.add_one_le_iff]
+  exact le_or_lt a b
