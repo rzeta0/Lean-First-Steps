@@ -164,5 +164,5 @@ lemma Int.le_or_succ_le (a b: ℤ): a ≤ b ∨ b + 1 ≤ a := by
   rw [Int.add_one_le_iff]
   exact le_or_lt a b
 
-example {c : ℤ} :  c ≤ -2 ∨ -1 ≤ c  := by
-  exact Int.le_or_succ_le c (-2:ℤ)
+example {c : ℤ} :  c ≤ -5 ∨ -4 ≤ c  := by
+  exact Int.le_or_succ_le c (-5:ℤ)
