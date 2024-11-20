@@ -178,8 +178,10 @@ example {n : ℕ} (h : n < 5) : n ≠ 5 := by
 ---
 ---
 
+
+---
 -- note the 2*a to avoid division by 2 with naturals
-def Triangle (a : ℕ) : Prop := ∃ n, 2* a = n * (n + 1)
+def Triangle (a : ℕ) : Prop := ∃ n, 2 * a = n * (n + 1)
 
 example : Triangle 10 := by
   dsimp [Triangle]
@@ -187,11 +189,15 @@ example : Triangle 10 := by
 
 ---
 
-lemma Int.le_or_succ_le2 (a b: ℤ): a ≤ b ∨ b + 1 ≤ a := by
-  rw [Int.add_one_le_iff]
-  exact le_or_lt a b
+-- src https://www.shyamsundergupta.com/triangle.htm
+example {t : ℕ} (h1: Triangle t) : Triangle (9*t + 1) := by
+  dsimp [Triangle] at *
+  obtain ⟨s, hs⟩ := h1
+  use 3*s + 1
+  calc
+    2 * (9 * t + 1) = 9 * (2 * t) + 2 := by ring
+    _ = 9 * (s * (s + 1)) + 2 := by rw [hs]
+    _ = 9*s^2 + 9*s + 2 := by ring
+    _ = ((3*s + 1)) * ((3*s + 1) + 1) := by ring
 
-
-lemma Nat.le_or_succ_le' (a b: ℕ): a ≤ b ∨ b + 1 ≤ a := by
-  rw [Nat.add_one_le_iff]
-  exact le_or_lt a b
+---
