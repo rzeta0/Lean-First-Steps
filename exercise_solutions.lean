@@ -166,3 +166,26 @@ lemma Int.le_or_succ_le (a b: ℤ): a ≤ b ∨ b + 1 ≤ a := by
 
 example {c : ℤ} :  c ≤ -5 ∨ -4 ≤ c  := by
   exact Int.le_or_succ_le c (-5:ℤ)
+
+--
+
+-- 17 - Using Our Own Lemma
+-- Write a Lean proof to show that n^3 ≠ 10, for any n ∈ ℕ.
+
+lemma Nat.le_or_succ_le (a b : ℕ): a ≤ b ∨ b + 1 ≤ a := by
+  rw [Nat.add_one_le_iff]
+  exact le_or_lt a b
+
+example {n : ℕ} :  n^3 ≠ 10  := by
+  have h := Nat.le_or_succ_le n 2
+  obtain ha | hb := h
+  · apply ne_of_lt
+    calc
+      n^3 ≤ 2^3 := by rel [ha]
+      _ < 10 := by norm_num
+  · apply ne_of_gt
+    calc
+      n^3 ≥ 3^3 := by rel [hb]
+      _ > 10 := by norm_num
+
+--
