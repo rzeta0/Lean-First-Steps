@@ -208,3 +208,11 @@ example {t : ℕ} (h1: Triangle t) : Triangle (9*t + 1) := by
     _ = ((3*s + 1)) * ((3*s + 1) + 1) := by ring
 
 ---
+
+def Triple (a : ℕ) : ℕ := 3 * a
+
+example {n : ℕ} (h: n = 1) : Triple 3 + n = 10 := by
+  dsimp [Triple]
+  linarith [h]
+
+---
