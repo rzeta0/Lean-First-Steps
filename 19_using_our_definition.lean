@@ -8,9 +8,9 @@ def Triangle (a : ℕ) : Prop := ∃ n, 2 * a = n * (n + 1)
 
 ---
 
-example {t : ℕ} (h1: Triangle t) : Triangle (9*t + 1) := by
+example {t : ℕ} (h: Triangle t) : Triangle (9*t + 1) := by
   dsimp [Triangle] at *
-  obtain ⟨m, hm⟩ := h1
+  obtain ⟨m, hm⟩ := h
   use 3*m + 1
   calc
     2 * (9 * t + 1) = 9 * (2 * t) + 2 := by ring
