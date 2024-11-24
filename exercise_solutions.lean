@@ -189,3 +189,15 @@ example {n : ℕ} :  n^3 ≠ 10  := by
       _ > 10 := by norm_num
 
 --
+
+-- 18 - Our Own Definition
+-- Create a definition of square numbers named Square.
+-- Provide a minimal illustrative example showing that 16 is a square number.
+
+def Square (a : ℕ) : Prop := ∃ n,  a = n * n
+
+example : Square 25 := by
+  dsimp [Square]
+  use 5
+
+---
