@@ -209,10 +209,14 @@ example {t : ℕ} (h1: Triangle t) : Triangle (9*t + 1) := by
 
 ---
 
-def Triple (a : ℕ) : ℕ := 3 * a
-
-example {n : ℕ} (h: n = 1) : Triple 3 + n = 10 := by
-  dsimp [Triple]
-  linarith [h]
+example {t: ℕ} (h1: Triangle t) : ∃ n, 8 * t + 1 = n^2 := by
+  dsimp [Triangle] at *
+  obtain ⟨s, hs⟩ := h1
+  use 2*s + 1
+  calc
+    8*t + 1 = 4 * (2 * t) + 1 := by ring
+    _ = 4 * (s*(s + 1)) + 1 := by rw [hs]
+    _ = 4*s^2 +4*s + 1 := by ring
+    _ = (2*s + 1)^2 := by ring
 
 ---

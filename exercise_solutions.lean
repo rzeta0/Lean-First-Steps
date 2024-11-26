@@ -156,6 +156,7 @@ example {p q : ℚ} (h : p - 1 ≠ 0 ∧ q - 2 ≠ 0) : (p - 1) * (q - 2) ≠  0
   apply mul_ne_zero_iff.mpr at h
   exact h
 
+
 -- 16 - Writing Our Own Lemma
 -- Write a lemma for integers a and b that says a ≤ b ∨ b+1 ≤ a
 -- Provide a simple illustrative example using negative integers.
@@ -167,7 +168,6 @@ lemma Int.le_or_succ_le (a b: ℤ): a ≤ b ∨ b + 1 ≤ a := by
 example {c : ℤ} :  c ≤ -5 ∨ -4 ≤ c  := by
   exact Int.le_or_succ_le c (-5:ℤ)
 
---
 
 -- 17 - Using Our Own Lemma
 -- Write a Lean proof to show that n^3 ≠ 10, for any n ∈ ℕ.
@@ -188,7 +188,6 @@ example {n : ℕ} :  n^3 ≠ 10  := by
       n^3 ≥ 3^3 := by rel [hb]
       _ > 10 := by norm_num
 
---
 
 -- 18 - Our Own Definition
 -- Create a definition of square numbers named Square.
@@ -199,5 +198,26 @@ def Square (a : ℕ) : Prop := ∃ n,  a = n * n
 example : Square 25 := by
   dsimp [Square]
   use 5
+
+
+-- 19 - Using Our Definition
+-- Write a Lean program to prove that.=, if T is a triangle number, then 8T+1 is a perfect square.
+
+---
+
+def Triangle (a : ℕ) : Prop := ∃ n, 2 * a = n * (n + 1)
+
+---
+
+example {t: ℕ} (h1: Triangle t) : ∃ n, 8 * t + 1 = n^2 := by
+  dsimp [Triangle] at *
+  obtain ⟨s, hs⟩ := h1
+  use 2*s + 1
+  calc
+    8*t + 1 = 4 * (2 * t) + 1 := by ring
+    _ = 4 * (s * (s + 1)) + 1 := by rw [hs]
+    _ = 4*s^2 + 4*s + 1 := by ring
+    _ = (2*s + 1)^2 := by ring
+
 
 ---
