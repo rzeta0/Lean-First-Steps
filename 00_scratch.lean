@@ -220,6 +220,3 @@ example {t: ℕ} (h1: Triangle t) : ∃ n, 8 * t + 1 = n^2 := by
     _ = (2*s + 1)^2 := by ring
 
 ---
-
-example (h: ∃ n : ℕ, n > 5) : 2=2 := by
-  obtain ⟨a, ha⟩ := h
