@@ -61,5 +61,32 @@ example {n : ℕ} (h: n = 5) : ¬ n = 1 := by
     calc
       5 = n := by rw [h]
       _ = 1 := by rw [hn]
-  -- contradiction
-  linarith
+  contradiction
+  --linarith
+
+
+----
+
+example {x : ℝ} (h1: x > 0) (h2: x^2 = 3^2): x = 3 := by
+  rw [sq_eq_sq_iff_eq_or_eq_neg] at h2
+  obtain ha | hb := h2
+  · -- x = 3
+    exact ha
+  · -- x = -3
+    have g3:=
+      calc
+        x = -3 := by rw [hb]
+        _ ≤ 0 := by norm_num
+    apply not_lt_of_ge at g3
+    contradiction
+
+
+-- shorter version
+
+example {x : ℝ} (h1: x > 0) (h2: x^2 = 3^2): x = 3 := by
+  rw [sq_eq_sq_iff_eq_or_eq_neg] at h2
+  obtain ha | hb := h2
+  · -- x = 3
+    exact ha
+  · -- x = -3
+    linarith
