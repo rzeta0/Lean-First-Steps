@@ -90,3 +90,5 @@ example {x : ℝ} (h1: x > 0) (h2: x^2 = 3^2): x = 3 := by
     exact ha
   · -- x = -3
     linarith
+
+---
