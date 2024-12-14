@@ -200,24 +200,11 @@ example : Square 25 := by
   use 5
 
 
--- 19 - Using Our Definition
--- Write a Lean program to prove that.=, if T is a triangle number, then 8T+1 is a perfect square.
+-- 19 - Proof by Contradiction
+-- Write a Lean proof to show
 
----
-
-def Triangle (a : ℕ) : Prop := ∃ n, 2 * a = n * (n + 1)
-
----
-
-example {t: ℕ} (h1: Triangle t) : ∃ n, 8 * t + 1 = n^2 := by
-  dsimp [Triangle] at *
-  obtain ⟨s, hs⟩ := h1
-  use 2*s + 1
-  calc
-    8*t + 1 = 4 * (2 * t) + 1 := by ring
-    _ = 4 * (s * (s + 1)) + 1 := by rw [hs]
-    _ = 4*s^2 + 4*s + 1 := by ring
-    _ = (2*s + 1)^2 := by ring
-
-
----
+example {a b : ℕ} (h1: a > 5 ↔ b = 6) (h2: b = 6) : ¬ a = 5 := by
+  intro g1
+  apply h1.mpr at h2
+  have g2: ¬ a > 5 := by linarith
+  contradiction
