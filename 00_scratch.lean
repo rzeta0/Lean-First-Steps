@@ -92,3 +92,38 @@ example {x : ℝ} (h1: x > 0) (h2: x^2 = 3^2): x = 3 := by
     linarith
 
 ---
+
+-- book example
+example (P : Prop) : ¬ (¬ P) ↔ P := by
+  by_cases h: P
+  · constructor
+    · intro g1
+      exact h
+    · intro g2
+      intro f
+      contradiction
+  · constructor
+    · intro g3
+      contradiction
+    · intro g4
+      contradiction
+
+-- my example
+example (P : Prop) : ¬ (¬ P) → P := by
+  by_cases h1: P
+  · intro g1
+    exact h1
+  · intro g2
+    contradiction
+
+example (P : Prop) : P → ¬ (¬ P) := by
+  by_cases h2: P
+  · intro g3
+    intro f
+    contradiction
+  · intro g4
+    contradiction
+
+----
+
+----
