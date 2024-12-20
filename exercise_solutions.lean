@@ -204,7 +204,7 @@ example : Square 25 := by
 -- Write a Lean proof to show ¬ a = 5, given a > 5 ↔ b = 6, and b = 6
 
 example {a b : ℕ} (h1: a > 5 ↔ b = 6) (h2: b = 6) : ¬ a = 5 := by
-  intro g1
+  by_contra g1
   apply h1.mpr at h2
   have g2: ¬ a > 5 := by linarith
   contradiction
