@@ -211,4 +211,10 @@ example {a b : ℕ} (h1: a > 5 ↔ b = 6) (h2: b = 6) : ¬ a = 5 := by
 
 
 -- 20 - Contradictory Cases
--- Write a Lean proof ----
+-- Write a Lean proof to show P → ¬ (¬ P)
+
+example (P : Prop) : P → ¬ (¬ P) := by
+  intro g
+  by_cases h1: ¬P
+  · contradiction
+  · exact h1
