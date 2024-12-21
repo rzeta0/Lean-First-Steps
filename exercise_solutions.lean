@@ -215,6 +215,6 @@ example {a b : ℕ} (h1: a > 5 ↔ b = 6) (h2: b = 6) : ¬ a = 5 := by
 
 example (P : Prop) : P → ¬ (¬ P) := by
   intro g
-  by_cases h1: ¬P
+  by_cases h1 : ¬P
   · contradiction
   · exact h1
