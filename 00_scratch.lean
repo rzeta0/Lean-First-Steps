@@ -108,22 +108,14 @@ example (P : Prop) : ¬ (¬ P) ↔ P := by
     · intro g4
       contradiction
 
--- my example
-example (P : Prop) : ¬ (¬ P) → P := by
-  by_cases h1: P
-  · intro g1
-    exact h1
-  · intro g2
-    contradiction
-
-example (P : Prop) : P → ¬ (¬ P) := by
-  by_cases h2: P
-  · intro g3
-    intro f
-    contradiction
-  · intro g4
-    contradiction
 
 ----
+
+example (P : Prop) : P → ¬ (¬ P) := by
+  intro g
+  by_cases h1 : P
+  · by_contra f
+    contradiction
+  · contradiction
 
 ----
