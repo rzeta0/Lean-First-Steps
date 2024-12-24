@@ -2,7 +2,7 @@
 
 import Mathlib.Tactic
 
-example (P : Prop) : ¬(¬P) → P := by
+example {P : Prop} : ¬(¬P) → P := by
   intro g
   by_cases h : P
   · exact h
