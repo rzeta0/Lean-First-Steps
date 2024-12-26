@@ -66,56 +66,9 @@ example {n : ℕ} (h: n = 5) : ¬ n = 1 := by
 
 
 ----
-
-example {x : ℝ} (h1: x > 0) (h2: x^2 = 3^2): x = 3 := by
-  rw [sq_eq_sq_iff_eq_or_eq_neg] at h2
-  obtain ha | hb := h2
-  · -- x = 3
-    exact ha
-  · -- x = -3
-    have g3:=
-      calc
-        x = -3 := by rw [hb]
-        _ ≤ 0 := by norm_num
-    apply not_lt_of_ge at g3
-    contradiction
-
-
--- shorter version
-
-example {x : ℝ} (h1: x > 0) (h2: x^2 = 3^2): x = 3 := by
-  rw [sq_eq_sq_iff_eq_or_eq_neg] at h2
-  obtain ha | hb := h2
-  · -- x = 3
-    exact ha
-  · -- x = -3
-    linarith
-
----
-
--- book example
-example (P : Prop) : ¬ (¬ P) ↔ P := by
-  by_cases h: P
-  · constructor
-    · intro g1
-      exact h
-    · intro g2
-      intro f
-      contradiction
-  · constructor
-    · intro g3
-      contradiction
-    · intro g4
-      contradiction
-
-
-----
-
-example (P : Prop) : P → ¬ (¬ P) := by
-  intro g
-  by_cases h1 : P
-  · by_contra f
-    contradiction
-  · contradiction
-
-----
+example {n : ℕ }: 0 * n = 0 := by
+  induction' n with k hk
+  · -- base case 0 * 0 = 0
+    norm_num
+  · -- inductive step 0 * (k + 1) = 0
+    norm_num
