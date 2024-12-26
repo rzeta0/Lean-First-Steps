@@ -66,9 +66,22 @@ example {n : ℕ} (h: n = 5) : ¬ n = 1 := by
 
 
 ----
-example {n : ℕ }: 0 * n = 0 := by
+
+example {m n : ℕ }: m^(n+1) = m * m^(n) := by
   induction' n with k hk
-  · -- base case 0 * 0 = 0
+  · -- base case m ^ (0 + 1) = m * m ^ 0
     norm_num
-  · -- inductive step 0 * (k + 1) = 0
+  · -- inductive step m ^ (k + 1 + 1) = m * m ^ (k + 1)
+    calc
+      m^(k + 1 + 1) = m * m^(k+1) := by ring
+
+
+example {m n : ℕ}: m^(n+1) = m * m^(n) := by
+  induction n with
+  | zero =>
     norm_num
+  | succ n ih =>
+    calc
+      m^(n + 1 + 1) = m * m^(n + 1) := by ring
+
+----
