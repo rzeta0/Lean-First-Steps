@@ -67,21 +67,43 @@ example {n : ℕ} (h: n = 5) : ¬ n = 1 := by
 
 ----
 
-example {m n : ℕ }: m^(n+1) = m * m^(n) := by
+example {n : ℕ} : 2^n ≥ n + 1 := by
   induction' n with k hk
-  · -- base case m ^ (0 + 1) = m * m ^ 0
+  · -- base case
     norm_num
-  · -- inductive step m ^ (k + 1 + 1) = m * m ^ (k + 1)
+  · -- inductive step
     calc
-      m^(k + 1 + 1) = m * m^(k+1) := by ring
+      2^(k + 1) = 2 * 2^k := by ring
+      _ ≥ 2 * (k + 1) := by rel [hk]
+      _ = (k + 1) + 1 + k := by ring
+      _ ≥ (k + 1) + 1 := by norm_num
 
 
-example {m n : ℕ}: m^(n+1) = m * m^(n) := by
+example {m n : ℕ} : 2^n ≥ n + 1 := by
   induction n with
   | zero =>
     norm_num
   | succ n ih =>
     calc
-      m^(n + 1 + 1) = m * m^(n + 1) := by ring
+      2^(n + 1) = 2 * 2^n := by ring
+      _ ≥ 2 * (n + 1) := by rel [ih]
+      _ = (n + 1) + 1 + n := by ring
+      _ ≥ (n + 1) + 1 := by norm_num
+
 
 ----
+
+-- number
+example {n : ℕ } : n + 1 ≥ n := by
+  calc
+    n + 1 ≥ n := by norm_num
+
+-- non-negative variable
+example {n m : ℕ } : n + m ≥ n := by
+  calc
+    n + m ≥ n := by norm_num
+
+-- non-negative square
+example {n m : ℤ } : n + m^2 ≥ n := by
+  calc
+    n + m^2 ≥ n := by nlinarith
