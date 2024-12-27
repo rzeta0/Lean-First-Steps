@@ -79,7 +79,7 @@ example {n : ℕ} : 2^n ≥ n + 1 := by
       _ ≥ (k + 1) + 1 := by norm_num
 
 
-example {m n : ℕ} : 2^n ≥ n + 1 := by
+example {n : ℕ} : 2^n ≥ n + 1 := by
   induction n with
   | zero =>
     norm_num
@@ -107,3 +107,5 @@ example {n m : ℕ } : n + m ≥ n := by
 example {n m : ℤ } : n + m^2 ≥ n := by
   calc
     n + m^2 ≥ n := by nlinarith
+
+---
