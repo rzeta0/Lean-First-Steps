@@ -218,3 +218,20 @@ example (P : Prop) : P → ¬ (¬ P) := by
   by_cases h1 : ¬P
   · contradiction
   · exact h1
+
+
+-- 21 - Simple Induction
+-- Write a Lean proof to show 3^n ≥ n + 1, for any natural number n.
+
+example {n : ℕ} : 3^n ≥ n + 1 := by
+  induction n with
+  | zero =>
+    norm_num
+  | succ n ih =>
+    calc
+      3^(n + 1) = 3 * 3^n := by ring
+      _ ≥ 3 * (n + 1) := by rel [ih]
+      _ = n + 1 + n + n + 1 + 1 := by ring
+      _ ≥ (n + 1) + 1 := by norm_num
+
+--
