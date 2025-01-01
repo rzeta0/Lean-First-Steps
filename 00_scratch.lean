@@ -37,13 +37,42 @@ example {n: ℕ} : Sq n = n^2 := by
 
 ---
 
-example {n : ℕ} : 3^n ≥ n + 1 := by
+def T : ℕ → ℚ
+  | 0 => 0
+  | n + 1 => T n + (n + 1)
+
+#eval T 4
+
+example (n : ℕ) : T n = n * (n + 1) / 2 := by
   induction n with
   | zero =>
-    norm_num
+    calc T 0 = 0 := by rw [T]
+      _ = 0 * (0 + 1) / 2 := by norm_num
+  | succ n ih =>
+    push_cast
+    calc
+      T (n + 1) = T n + (n + 1) := by rw [T]
+      _ = n * (n + 1) / 2 + (n + 1) := by rw [ih]
+      _ = (n + 1) * (n + 1 + 1) / 2 := by ring
+
+---
+
+def Cube : ℕ → ℕ
+  | 0 => 0
+  | n + 1 => 1 + 3*n + 3*n^2 + Cube n
+
+#eval Cube 5
+
+example {n: ℕ} : Cube n = n^3 := by
+  induction n with
+  | zero =>
+    calc
+      Cube 0 = 0 := by rw [Cube]
+      _ = 0^3 := by norm_num
   | succ n ih =>
     calc
-      3^(n + 1) = 3 * 3^n := by ring
-      _ ≥ 3 * (n + 1) := by rel [ih]
-      _ = n + 1 + n + n + 1 + 1 := by ring
-      _ ≥ (n + 1) + 1 := by norm_num
+      Cube (n + 1) = 1 + 3 * n + 3 * n^2 + Cube n := by rw [Cube]
+      _ = 1 + 3 * n + 3 * n^2+ n^3 := by rw [ih]
+      _ = (n + 1)^3 := by ring
+
+--
