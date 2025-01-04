@@ -234,4 +234,26 @@ example {n : ℕ} : 3^n ≥ n + 1 := by
       _ = n + 1 + n + n + 1 + 1 := by ring
       _ ≥ (n + 1) + 1 := by norm_num
 
---
+-- 22 - Recursion
+-- Given a recursively defined function g(0)=1 and g(n+1)= -1 * g(n)
+-- show by induction that g(n) = (-1)^n
+
+def g : ℕ → ℤ
+  | 0 => 1
+  | n + 1 => -1 * g n
+
+#eval g 3
+
+example {n: ℕ} : g n = (-1)^n := by
+  induction n with
+  | zero =>
+    calc
+      g 0 = 1 := by rw [g]
+      _ = (-1)^0 := by norm_num
+  | succ n ih =>
+    calc
+      g (n + 1) = (-1) * g n := by rw [g]
+      _ = (-1) * (-1)^n := by rw [ih]
+      _ = (-1)^(n+1) := by ring
+
+---

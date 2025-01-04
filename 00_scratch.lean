@@ -57,22 +57,22 @@ example (n : ℕ) : T n = n * (n + 1) / 2 := by
 
 ---
 
-def Cube : ℕ → ℕ
-  | 0 => 0
-  | n + 1 => 1 + 3*n + 3*n^2 + Cube n
+def f : ℕ → ℤ
+  | 0 => 1
+  | n + 1 => -1 * f n
 
-#eval Cube 5
+#eval f 3
 
-example {n: ℕ} : Cube n = n^3 := by
+example {n: ℕ} : f n = (-1)^n := by
   induction n with
   | zero =>
     calc
-      Cube 0 = 0 := by rw [Cube]
-      _ = 0^3 := by norm_num
+      f 0 = 1 := by rw [f]
+      _ = (-1)^0 := by norm_num
   | succ n ih =>
     calc
-      Cube (n + 1) = 1 + 3 * n + 3 * n^2 + Cube n := by rw [Cube]
-      _ = 1 + 3 * n + 3 * n^2+ n^3 := by rw [ih]
-      _ = (n + 1)^3 := by ring
+      f (n + 1) = (-1) * f n := by rw [f]
+      _ = (-1) * (-1)^n := by rw [ih]
+      _ = (-1)^(n+1) := by ring
 
 --
