@@ -1,13 +1,5 @@
 import Mathlib.Tactic
 
-inductive Weekend where
- | sunday : Weekend
- | monday : Weekend
-
-
-#check Weekend.rec
-
-
 inductive Weekday where
  | sunday : Weekday
  | monday : Weekday
@@ -29,6 +21,23 @@ def numberOfDay (d : Weekday) : Nat :=
   | friday    => 6
   | saturday  => 7
 
-#eval numberOfDay Weekday.sunday  -- 1
-#eval numberOfDay Weekday.monday  -- 2
-#eval numberOfDay Weekday.tuesday -- 3
+set_option pp.all true
+#print numberOfDay
+-- ... numberOfDay.match_1
+#print numberOfDay.match_1
+-- ... Weekday.casesOn ...
+#print Weekday.casesOn
+-- ... Weekday.rec ...
+#check Weekday.rec
+/-
+@Weekday.rec.{u}
+ : {motive : Weekday → Sort u} →
+    motive Weekday.sunday →
+    motive Weekday.monday →
+    motive Weekday.tuesday →
+    motive Weekday.wednesday →
+    motive Weekday.thursday →
+    motive Weekday.friday →
+    motive Weekday.saturday →
+    (t : Weekday) → motive t
+-/
