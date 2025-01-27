@@ -1,4 +1,4 @@
--- 02 - Simple Proof by Calculation
+-- 02 - Proof by Calculation
 
 import Mathlib.Tactic
 
